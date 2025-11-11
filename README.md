@@ -78,4 +78,6 @@ Click **Create scratch org**.
 
 Go to https://app.gearset.com/salesforce-connections and find your scratch org under your Dev Hub. Click **Log in**.
 
+In Setup, go to `Trusted URLs`. Open the `GIPHY` row, check `Active` and click **Save**.
+
 In the App Launcher, search `GIFter`. Once GIFter opens, run a search.

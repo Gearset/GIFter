@@ -59,13 +59,16 @@ Enter the package details:
 
 Click **Create package version**.
 
+<img width="3839" height="1820" alt="image" src="https://github.com/user-attachments/assets/f8394670-6ee5-4f01-b09e-f0ce751b336a" />
+
+
 ## Install package into a scratch org
 
-Go to https://app.gearset.com/salesforce-connections and click **Create scratch org** on your Dev Hub.
+Click **Create scratch org** on your Dev Hub.
 
 Give the scratch org a name.
 
-In **Install an unlocked package**, add your package version ID and install key from the previous step.
+In **Install an unlocked package**, enter the install key `test1234` from the previous step.
 
 In **Assign permission sets**, enter `GIFter`.
 
@@ -76,7 +79,3 @@ Click **Create scratch org**.
 Go to https://app.gearset.com/salesforce-connections and find your scratch org under your Dev Hub. Click **Log in**.
 
 In the App Launcher, search `GIFter`. Once GIFter opens, run a search.
-
-```
-
-Enjoy!

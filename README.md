@@ -6,13 +6,24 @@ The GIF-to-Chatter app for Lightning Platform you didn't know you needed!
 
 ## Get a GIPHY API Key
 
+Fork this repo for your demo.
+
 Go to [https://developers.giphy.com/](https://developers.giphy.com/) and create an new app. Grab the API Key and update the `apiKey` in `force-app/main/default/GIPHY.resource`.
+
+## Install the Salesforce CLI
+
+Run `npm install -g @salesforce/cli`
+
+## Authorize your DevHub
+```
+sf org login web --set-default-dev-hub --alias MyDevHub
+```
 
 ## Create an Unlocked Package
 
 Create an Unlocked package:
 ```
-sfdx force:package2:create -n GIFter -d "Using GIPHY to find GIFs and post to Chatter" -o Unlocked
+sf package create --name "GIFter" --path force-app --package-type Unlocked
 ```
 
 This will only take a moment, and you'll have the following output:
@@ -28,42 +39,44 @@ Grab the `Package2 Id`.
 
 Open the `sfdx-project.json` file and replace `YOUR_PACKAGE_ID` with the ID from above (e.g. `0Ho6A0000004C9hSAE`).
 
-Now, create a version of your package:
-```
-sfdx force:package2:version:create -d force-app --wait 10
-```
+## Create an unlocked package version
 
-This will take a few moments. When complete, you'll have a message like the following:
+Go to https://app.gearset.com/packaging and select your DevHub.
 
-```
-Successfully created the package2 version [08c6A0000004CFWQA2]. Package2 Version Id: 05i6A000000CaSoQAK.
-Subscriber Package2 Version Id: 04t6A000001aR9rQAE.
-```
+Click **Create new package version** and click **Next**.
 
-Grab the last ID that starts with `04t` as that's what we'll use when installing into a new environment.
+Select this repo and branch and click **Next**.
 
-Create a new scratch org:
+Select all of the items in the comparison and click **Create unlocked package version**.
 
-```
-sfdx force:org:create -s -f config/project-scratch-def.json
-```
+Enter the package details:
+|Field|Value|
+|-----|-----|
+|Version name|ver 0.1|
+|Version number|0.1.0.NEXT|
+|Validation|Skip validation|
+|Install key|test1234|
 
-Install the package version:
+Click **Create package version**.
 
-```
-sfdx force:package:install -i 04t6A000001aR9rQAE --wait 10
-```
+## Install package into a scratch org
 
-Assign the permission set:
+Go to https://app.gearset.com/salesforce-connections and click **Create scratch org** on your Dev Hub.
 
-```
-sfdx force:user:permset:assign -n GIFter
-```
+Give the scratch org a name.
 
-Open the app:
+In **Install an unlocked package**, add your package version ID and install key from the previous step.
 
-```
-sfdx force:org:open -p one/one.app#/n/GIFter
+In **Assign permission sets**, enter `GIFter`.
+
+Click **Create scratch org**.
+
+## Open scratch org
+
+Go to https://app.gearset.com/salesforce-connections and find your scratch org under your Dev Hub. Click **Log in**.
+
+In the App Launcher, search `GIFter`. Once GIFter opens, run a search.
+
 ```
 
 Enjoy!
